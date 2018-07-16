@@ -1,0 +1,22 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <div class="col-md-6 text-center">
+      <h1>Login</h1>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-md-6 align-self-center">
+      <form #formulario="ngForm" (ngSubmit)="login(formulario)">
+        <div class="form-group">
+          <label for="email">Correo Electrónico</label>
+          <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" placeholder="Ingrese su correo electrónico" ngModel="">
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" name="password" placeholder="Password" ngModel="">
+        </div>
+        <button type="submit" class="btn btn-primary" >Ingresar</button>
+      </form>
+    </div>
+  </div>
+</div>

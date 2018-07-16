@@ -1,0 +1,8 @@
+.arrow {
+  background-color: lightgreen;
+  margin-top: 1em;
+}
+
+app-autor-detail:hover{
+  cursor: pointer;
+}

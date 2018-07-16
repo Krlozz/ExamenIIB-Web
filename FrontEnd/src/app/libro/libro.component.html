@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <div class="row justify-content-center">
+    <h1>LIBROS</h1>
+  </div>
+  <div class="row justify-content-center" *ngIf="libros">
+    <app-libro-detail class="col-sm-3" *ngFor="let libro of libros" [libro]="libro" ></app-libro-detail>
+  </div>
+  <div class="row">
+    <div class="col-lg-6 text-left">
+      <button class="btn arrow" (click)="obtenerAnteriores()" > <- Anteriores 4 </button>
+    </div>
+    <div class="col-lg-6 text-right">
+      <button class="btn arrow" (click)="obtenerSiguientes()"> Siguientes 4 -></button>
+    </div>
+  </div>
+</div>
