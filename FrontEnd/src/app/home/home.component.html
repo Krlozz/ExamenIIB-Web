@@ -6,7 +6,7 @@
             <img [src]="usuario.imagenUrl" class="img-thumbnail img-fluid" [width]="50" [height]="50" alt=""> {{ usuario.usuario }}
 
           </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink" style="float: right">
             <a class="dropdown-item" href="#">Cerrar sesión</a>
           </div>
         </li>
@@ -21,13 +21,13 @@
       <div class="input-group mb-3"style="margin: 8px">
         <input type="text" name="busqueda" class="form-control" placeholder="Buscar usuario, autor o libro" aria-label="Busqueda" aria-describedby="Busqueda" #busqueda (keyup)="buscar(busqueda)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"/>
         <div *ngIf="userSearch || libroSearch || autorSearch " class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#" *ngFor="let user of userSearch">
+          <a class="dropdown-item" *ngFor="let user of userSearch">
             {{ user.usuario }} <span class="badge badge-pill badge-primary col-sm-4">Usuario</span>
           </a>
-          <a class="dropdown-item" href="#" *ngFor="let libro of libroSearch">
+          <a class="dropdown-item" *ngFor="let libro of libroSearch">
             {{ libro.nombre }} <span class="badge badge-pill badge-info">Libro</span>
           </a>
-          <a class="dropdown-item" href="#" *ngFor="let autor of autorSearch">
+          <a class="dropdown-item" *ngFor="let autor of autorSearch">
             {{ autor.nombre +" " + autor.apellido }} <span class="badge badge-pill badge-warning">Autor</span>
           </a>
         </div>
