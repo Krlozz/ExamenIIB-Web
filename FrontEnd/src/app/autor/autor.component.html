@@ -1,16 +1,28 @@
+<br>
 <div class="container-fluid">
-  <div class="row justify-content-center">
-    <h1>AUTORES</h1>
+  <div class="row text-left">
+    <div class="col-sm-1 text-left">
+
+    </div>
+    <div class="col-lg-5 text-left">
+      <h1><b>AUTORES</b></h1>
+    </div>
   </div>
   <div class="row justify-content-center" *ngIf="autores">
     <app-autor-detail class="col-md-5" *ngFor="let autor of autores" [autor]="autor" ></app-autor-detail>
   </div>
   <div class="row">
-    <div class="col-lg-6 text-left">
+    <div class="col-sm-1 text-left">
+
+    </div>
+    <div class="col-lg-5 text-left">
       <button class="btn arrow" (click)="obtenerAnteriores()" > <- Anteriores 2 </button>
     </div>
-    <div class="col-lg-6 text-right">
+    <div class="col-lg-5 text-right">
       <button class="btn arrow" (click)="obtenerSiguientes()"> Siguientes 2 -></button>
+    </div>
+    <div class="col-sm-1 text-left">
+
     </div>
   </div>
 </div>

@@ -1,9 +1,10 @@
 <div class="container-fluid">
     <nav class="navbar sticky-top row justify-content-start">
-      <ul class="navbar-nav col-lg-4 text-left">
+      <ul class="navbar-nav col-md-12 text-right">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" *ngIf="usuario">
             <img [src]="usuario.imagenUrl" class="img-thumbnail img-fluid" [width]="50" [height]="50" alt=""> {{ usuario.usuario }}
+
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" href="#">Cerrar sesión</a>
@@ -11,9 +12,10 @@
         </li>
       </ul>
     </nav>
-  <div class="row justify-content-center">
-    <div class="col-sm-8">
-      <div class="input-group mb-3">
+  <div class="row justify-content-left">
+    <br><br><br>
+    <div class="col-sm-5">
+      <div class="input-group mb-3"style="margin: 8px">
         <input type="text" name="busqueda" class="form-control" placeholder="Buscar usuario, autor o libro" aria-label="Busqueda" aria-describedby="Busqueda" #busqueda (keyup)="buscar(busqueda)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true"/>
         <div *ngIf="userSearch || libroSearch || autorSearch " class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="#" *ngFor="let user of userSearch">
@@ -26,13 +28,21 @@
             {{ autor.nombre +" " + autor.apellido }} <span class="badge badge-pill badge-warning">Autor</span>
           </a>
         </div>
-        <div class="input-group-append">
+        <div class="input-group-append" style="margin: 8px">
           <button class="btn btn-primary" (click)="buscar(busqueda)" type="button" id="btn-buscar">Buscar</button>
         </div>
       </div>
     </div>
+    <br><br><br>
   </div>
 </div>
 <app-usuario></app-usuario>
+<hr style="border: 8px; border: solid"/>
+<hr />
 <app-autor></app-autor>
+<hr style="border: 8px; border: solid"/>
+<hr />
 <app-libro></app-libro>
+<hr style="border: 8px; border: solid"/>
+<hr />
+<br><br>

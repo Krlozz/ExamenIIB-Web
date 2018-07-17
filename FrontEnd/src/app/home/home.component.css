@@ -1,6 +1,8 @@
 .navbar{
-  background: #000011;
-  color: white;
+  background: #fbf9fc;
+  color: #000000;
+  border: 5px;
+  border: solid;
 }
 .sticky-top{
   margin-bottom: 1em;
