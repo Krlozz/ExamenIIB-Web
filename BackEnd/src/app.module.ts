@@ -15,12 +15,12 @@ import { UsuarioController } from './usuario/usuario.controller';
 @Module({
   imports: [
     TypeOrmModule.forRoot({
-      type: 'mssql',
+      type: 'mysql',
       host: 'localhost',
-      port: 1433,
-      username: 'sa',
-      password: 'barcelona',
-      database: 'examenweb2bim',
+      port: 3307,
+      username: 'carlos',
+      password: '1234',
+      database: 'bddBack',
       entities: [__dirname + '/../**/*.entity{.ts,.js}'],
       synchronize: true,
       options: { encrypt: true },
