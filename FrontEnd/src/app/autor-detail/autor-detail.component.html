@@ -1,16 +1,20 @@
-<div class="row">
-  <div class="col-lg-6">
-    <img [src]="autor.imagenUrl" alt="">
-  </div>
-  <div class="col-lg-6">
+<div class="container" style="border: 1px; border-color: cadetblue ;border: solid">
+  <div class="col border-0">
     <div class="row">
-      <p class="nombreAutor">{{ autor.nombre +" "+autor.apellido | uppercase }}</p>
-    </div>
-    <div class="row">
-      <p>Nacimiento: {{ autor.fechaNacimiento}}</p>
-    </div>
-    <div class="row">
-      <p>Libros: {{ autor.numeroLibros }}</p>
+      <div class="col-lg-6">
+        <img [src]="autor.imagenUrl" alt="">
+      </div>
+      <div class="col-lg-6">
+        <div class="row">
+          <p class="nombreAutor">{{ autor.nombre +" "+autor.apellido | uppercase }}</p>
+        </div>
+        <div class="row">
+          <p>Nacimiento: {{ autor.fechaNacimiento}}</p>
+        </div>
+        <div class="row">
+          <p>Libros: {{ autor.numeroLibros }}</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
