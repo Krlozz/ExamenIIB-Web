@@ -12,8 +12,8 @@ export class AutorController {
         @Res() response,
         @Req() request,
     ) {
-        const equipos = await this._autorService.traerTodos();
-        return response.send(equipos);
+        const autores = await this._autorService.traerTodos();
+        return response.send(autores);
     }
 
     @Get('/:paramBusqueda')
