@@ -1,0 +1,27 @@
+button {
+  width: 100%;
+}
+
+.imagen-perfil {
+  border-style: solid;
+  border-color: black;
+}
+.borde{
+  border-style: solid;
+  border-width: 5px;
+  border-color: ghostwhite;
+}
+.borde:hover{
+  border-color: red;
+}
+
+.contenedor{
+  text-align: center;
+  color: black;
+}
+
+.contenedor:hover{
+  color: red;
+  cursor: pointer;
+}
+

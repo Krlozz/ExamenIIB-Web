@@ -1,0 +1,162 @@
+<app-barra-superior [imgUsuario]="usuarioActual?.urlImg" [nombreUsuario]="usuarioActual?.nombre"></app-barra-superior>
+<br>
+<div class="row">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+    <h3 style="text-align: center">Perfil</h3>
+    <br>
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Usuario</h5>
+        <br>
+        <mat-card class="contenedor">
+          <h5 style="text-align: center">{{usuarioActual?.nombre}}</h5>
+          <img class="borde" style="width: 100%; max-width: 250px" src="{{usuarioActual?.urlImg}}" alt="Usuario Foto">
+        </mat-card>
+      </div>
+      <div class="col-sm-9"></div>
+    </div>
+    <br>
+    <h3>Peticiones</h3>
+    <br>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-10">
+        <div *ngFor="let peticion of listaPeticiones">
+          <br>
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+              <mat-card class="contenedor">
+                <label style="text-align: center">{{usuarioDueno?.nombre}}</label>
+                <img class="borde" style="width: 100%; max-width: 250px" src="{{usuarioDueno?.urlImg}}" alt="Usuario Foto">
+              </mat-card>
+            </div>
+            <div class="col-sm-4"></div>
+            <div class="col-sm-3">
+              <h5>En Espera</h5>
+            </div>
+            <div class="col-sm-1"></div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+              <mat-card class="contenedor">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <label>Neymar</label>
+                    <br>
+                    <label>25</label>
+                  </div>
+                  <div class="col-sm-6">
+                    <img class="borde" style="width: 100%" src="https://files.antena2.com.co/antena2/public/styles/imagen_despliegue/public/2018-07/neymar_psg_afp_0_0_0.jpg?itok=LjsU26K4" alt="Usuario Foto">
+                  </div>
+                </div>
+              </mat-card>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2">
+              <mat-icon>swap_horiz</mat-icon>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+              <mat-card class="contenedor">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <label>{{jugadorSeleccionado?.nombreCamiseta}}</label>
+                    <br>
+                    <label>{{jugadorSeleccionado?.goles}}</label>
+                  </div>
+                  <div class="col-sm-6">
+                    <img class="borde" style="width: 100%" src="{{jugadorSeleccionado?.urlImg}}" alt="Usuario Foto">
+                  </div>
+                </div>
+              </mat-card>
+            </div>
+            <div class="col-sm-1"></div>
+          </div>
+          <br>
+          <hr>
+        </div>
+
+
+        <div *ngFor="let peticion of listaPetBoton">
+          <br>
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+              <br>
+              <br>
+              <a tabindex="0" class="btn btn-lg btn-info" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="Has aceptado la transferencia">Aceptar</a>
+              <br>
+              <br>
+              <a tabindex="0" class="btn btn-lg btn-danger" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="Has rechazado la transferencia">Rechazar</a>
+            </div>
+            <div class="col-sm-4"></div>
+            <div class="col-sm-3">
+              <mat-card class="contenedor">
+                <label style="text-align: center">Jessenia</label>
+                <img class="borde" style="width: 100%; max-width: 250px" src="https://scontent.fuio1-1.fna.fbcdn.net/v/t1.0-9/37553551_2207772046125062_3647195754277109760_n.jpg?_nc_cat=0&_nc_eui2=AeE2hs4x9nCRrT2c1mduu8eSqLGxgmXEzqKgjd5AWdAPlHI8ob5EyEQRg-ON48x_zn6xKUPRbz88gv25gVoJan3XrwULFdvT9R_mbKXypTw3Tw&oh=7c02c6deb3b45e0ec070b615b799e6e1&oe=5BD1B9D6" alt="Usuario Foto">
+              </mat-card>
+            </div>
+            <div class="col-sm-1"></div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+              <mat-card class="contenedor">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <label>Mbappe</label>
+                    <br>
+                    <label>20</label>
+                  </div>
+                  <div class="col-sm-6">
+                    <img class="borde" style="width: 100%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/Kylian_Mbapp%C3%A9_Russia_2018.jpg/245px-Kylian_Mbapp%C3%A9_Russia_2018.jpg" alt="Usuario Foto">
+                  </div>
+                </div>
+              </mat-card>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2">
+              <mat-icon>swap_horiz</mat-icon>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+              <mat-card class="contenedor">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <label>Ramos</label>
+                    <br>
+                    <label>6</label>
+                  </div>
+                  <div class="col-sm-6">
+                    <img class="borde" style="width: 100%" src="https://www.lavanguardia.com/r/GODO/LV/p5/WebSite/2018/03/10/Recortada/930069748_20180310155538-kkSD-U441415399549d6H-992x558@LaVanguardia-Web.jpg" alt="Usuario Foto">
+                  </div>
+                </div>
+              </mat-card>
+            </div>
+            <div class="col-sm-1"></div>
+          </div>
+          <br>
+          <hr>
+        </div>
+      </div>
+      <div class="col-sm-1"></div>
+    </div>
+    <br>
+    <button mat-raised-button color="primary" style="width: 100%">Cargar más</button>
+    <br>
+  </div>
+  <div class="col-sm-1"></div>
+</div>
+<script>
+  $(function () {
+    $('[data-toggle="popover"]').popover()
+  })
+</script>
+<script>$('.popover-dismiss').popover({
+  trigger: 'focus'
+})</script>

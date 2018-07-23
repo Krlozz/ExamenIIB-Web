@@ -1,0 +1,69 @@
+<app-barra-superior [imgUsuario]="usuarioActual?.urlImg" [nombreUsuario]="usuarioActual?.nombre"></app-barra-superior>
+<br>
+<div class="row">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+    <h3 style="text-align: center">Selección de Transferencia</h3>
+    <br>
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Usuario</h5>
+        <br>
+        <mat-card class="contenedor">
+          <h5 style="text-align: center">{{usuarioActual?.nombre}}</h5>
+          <img class="borde" style="width: 100%; max-width: 250px" src="{{usuarioActual?.urlImg}}" alt="Usuario Foto">
+        </mat-card>
+      </div>
+      <div class="col-sm-9">
+        <div class="row">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-6">
+            <h5 style="text-align: center">Jugador a Transferir</h5>
+            <br>
+            <div>
+              <mat-card class="contenedor">
+                <div class="row">
+                  <div class="col-sm-4">
+                    <img class="borde" src="{{jugadoraTransferir?.urlImg}}" alt="Usuario Foto" style="width: 100%">
+                  </div>
+                  <div class="col-sm-8">
+                    <h5>{{jugadoraTransferir?.nombreCamiseta}}</h5>
+                    <label>Numero Camiseta: {{jugadoraTransferir?.numeroCamiseta}}</label>
+                    <button mat-stroked-button color="primary" style="width: 100%" (click)="irAPerfil(jugadoraTransferir?.id)">Transferir</button>
+                  </div>
+                </div>
+              </mat-card>
+            </div>
+            <div class="col-sm-3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <h5>Jugadores</h5>
+    <br>
+    <div class="row">
+      <div *ngFor="let jugador of listaJugadores" class="col-sm-3" style="width: 100%">
+        <mat-card class="contenedor">
+          <div class="row">
+            <div class="col-sm-5">
+              <h5>{{jugador.nombreCamiseta}}</h5>
+              <label>Numero Camiseta: {{jugador.numeroCamiseta}}</label>
+            </div>
+            <div class="col-sm-7">
+              <img class="borde" style="width: 100%" src="{{jugador.urlImg}}" alt="Usuario Foto">
+            </div>
+          </div>
+          <br>
+        </mat-card>
+        <br>
+      </div>
+    </div>
+    <br>
+    <button mat-raised-button color="primary" style="width: 100%">Cargar más</button>
+    <br>
+    <br>
+  </div>
+  <div class="col-sm-1"></div>
+</div>
