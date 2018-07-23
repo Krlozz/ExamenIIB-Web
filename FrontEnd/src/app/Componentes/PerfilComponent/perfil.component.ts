@@ -2,16 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import {Usuario} from "../../Interfaces/usuario";
 import {ActivatedRoute} from "@angular/router";
 import {UsuarioService} from "../../Servicios/usuario.service";
-import {JugadorService} from "../../Servicios/jugador.service";
-import {Jugador} from "../../Interfaces/jugador";
-import {EquipoService} from "../../Servicios/equipo.service";
-import {Equipo} from "../../Interfaces/equipo";
+import {LibroService} from "../../Servicios/libro.service";
+import {Jugador} from "../../Interfaces/libro";
+import {AutorService} from "../../Servicios/autor.service";
+import {Equipo} from "../../Interfaces/autor";
 
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
   styleUrls: ['./perfil.component.css'],
-  providers: [JugadorService, UsuarioService, EquipoService]
+  providers: [LibroService, UsuarioService, AutorService]
 })
 export class PerfilComponent implements OnInit {
 
@@ -23,8 +23,8 @@ export class PerfilComponent implements OnInit {
   usuarioDueno: Usuario;
   constructor( private _activatedRoute: ActivatedRoute,
                private _usuarioService: UsuarioService,
-               private _jugadorService: JugadorService,
-               private _equipoService: EquipoService,) {
+               private _jugadorService: LibroService,
+               private _equipoService: AutorService,) {
     this._activatedRoute.params.subscribe(
       params=>{
         this.getUsuarioActualPorId(params['idUsuarioActual']);
@@ -44,7 +44,7 @@ export class PerfilComponent implements OnInit {
     )
   }
   getJugadorporId(idJugador) {
-    this._jugadorService.getJugadorPorId(idJugador).subscribe(
+    this._jugadorService.getLibroPorId(idJugador).subscribe(
       (result: any) => {
         this.jugadorSeleccionado =  result[0];
         console.log(this.jugadorSeleccionado);
@@ -53,7 +53,7 @@ export class PerfilComponent implements OnInit {
     );
   }
   getJugadordeUsuario(id) {
-    this._equipoService.getEquiposporUsuario(id).subscribe(
+    this._equipoService.getAutoresporUsuario(id).subscribe(
       (result: any) => {
         this.equipo = result[0];
         console.log(this.equipo);

@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import {Usuario} from "../../Interfaces/usuario";
-import {Jugador} from "../../Interfaces/jugador";
+import {Jugador} from "../../Interfaces/libro";
 import {ActivatedRoute, Router} from "@angular/router";
-import {JugadorService} from "../../Servicios/jugador.service";
+import {LibroService} from "../../Servicios/libro.service";
 import {UsuarioService} from "../../Servicios/usuario.service";
-import {EquipoService} from "../../Servicios/equipo.service";
-import {Equipo} from "../../Interfaces/equipo";
+import {AutorService} from "../../Servicios/autor.service";
+import {Equipo} from "../../Interfaces/autor";
 
 @Component({
   selector: 'app-seleccion-transferencia',
   templateUrl: './seleccion-transferencia.component.html',
   styleUrls: ['./seleccion-transferencia.component.css'],
-  providers: [JugadorService, UsuarioService, EquipoService]
+  providers: [LibroService, UsuarioService, AutorService]
 })
 export class SeleccionTransferenciaComponent implements OnInit {
 
@@ -22,9 +22,9 @@ export class SeleccionTransferenciaComponent implements OnInit {
 
   constructor(
     private _activatedRoute: ActivatedRoute,
-    private _jugadorService: JugadorService,
+    private _jugadorService: LibroService,
     private _usuarioService: UsuarioService,
-    private _equipoService: EquipoService,
+    private _equipoService: AutorService,
     private _router: Router,
   ) {
     this._activatedRoute.params.subscribe(
@@ -46,7 +46,7 @@ export class SeleccionTransferenciaComponent implements OnInit {
     )
   }
   getJugadorporId(idJugador) {
-    this._jugadorService.getJugadorPorId(idJugador).subscribe(
+    this._jugadorService.getLibroPorId(idJugador).subscribe(
       (result: any) => {
         this.jugadoraTransferir =  result[0];
         console.log(this.jugadoraTransferir);
@@ -54,7 +54,7 @@ export class SeleccionTransferenciaComponent implements OnInit {
     )
   }
   getJugadordeUsuario(idUsuarioActual) {
-    this._equipoService.getEquiposporUsuario(idUsuarioActual).subscribe(
+    this._equipoService.getAutoresporUsuario(idUsuarioActual).subscribe(
       (result: any) => {
         this.equipo = result[0];
         this.getJugadoresdeEquipo(this.equipo.id);
@@ -62,7 +62,7 @@ export class SeleccionTransferenciaComponent implements OnInit {
     )
   }
   getJugadoresdeEquipo(idEquipo) {
-    this._jugadorService.getJugadorPorEquipo(idEquipo).subscribe(
+    this._jugadorService.getLibroPorAutor(idEquipo).subscribe(
       (result: any[]) => {
         this.listaJugadores = result;
       }

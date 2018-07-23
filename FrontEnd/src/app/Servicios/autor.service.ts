@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UsuarioService} from "./usuario.service";
 
 @Injectable()
-export class EquipoService {
+export class AutorService {
 
   constructor(private http: HttpClient) {
   }
@@ -17,19 +17,17 @@ export class EquipoService {
     return headers;
   }
 
-  getEquipos() {
-    let header = EquipoService.getCommonHeaders();
-    return this.http.get("http://localhost:1337/equipo",{headers: header});
+  getAutores() {
+    let header = AutorService.getCommonHeaders();
+    return this.http.get("http://localhost:1337/autor",{headers: header});
   }
-  getEquipoBusqueda(parametroBusqueda) {
-    let header = EquipoService.getCommonHeaders();
-    return this.http.get("http://localhost:1337/equipo/" + parametroBusqueda ,{headers: header});
+  getAutorBusqueda(parametroBusqueda) {
+    let header = AutorService.getCommonHeaders();
+    return this.http.get("http://localhost:1337/autor/" + parametroBusqueda ,{headers: header});
   }
-  getEquiposporUsuario(idUsuario) {
-    let header = EquipoService.getCommonHeaders();
-    return this.http.get("http://localhost:1337/equipo/porUsuario/" + idUsuario ,{headers: header});
+  getAutoresporUsuario(idUsuario) {
+    let header = AutorService.getCommonHeaders();
+    return this.http.get("http://localhost:1337/autor/porUsuario/" + idUsuario ,{headers: header});
   }
-
-
 
 }

@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
-import {EquipoService} from "../../Servicios/equipo.service";
+import {AutorService} from "../../Servicios/autor.service";
 import {UsuarioService} from "../../Servicios/usuario.service";
-import {JugadorService} from "../../Servicios/jugador.service";
+import {LibroService} from "../../Servicios/libro.service";
 import {Usuario} from "../../Interfaces/usuario";
 
 @Component({
   selector: 'app-peticion-transferencia',
   templateUrl: './peticion-transferencia.component.html',
   styleUrls: ['./peticion-transferencia.component.css'],
-  providers: [EquipoService,UsuarioService, JugadorService]
+  providers: [AutorService,UsuarioService, LibroService]
 })
 export class PeticionTransferenciaComponent implements OnInit {
 
@@ -19,9 +19,9 @@ export class PeticionTransferenciaComponent implements OnInit {
   usuarioActual: Usuario;
 
   constructor(private _activatedRoute: ActivatedRoute,
-              private _equipoService: EquipoService,
+              private _equipoService: AutorService,
               private _usuarioService: UsuarioService,
-              private _jugadorService: JugadorService,
+              private _jugadorService: LibroService,
               private _router: Router,
   ) {
     this._activatedRoute.params.subscribe(
@@ -48,7 +48,7 @@ export class PeticionTransferenciaComponent implements OnInit {
     )
   }
   getEquipoPorUsuario(idUsuario) {
-    this._equipoService.getEquiposporUsuario(idUsuario).subscribe(
+    this._equipoService.getAutoresporUsuario(idUsuario).subscribe(
       (result: any[]) => {
         this.listaEquipo = result;
         this.getJugadorPorEquipo(this.listaEquipo[0].id);
@@ -56,7 +56,7 @@ export class PeticionTransferenciaComponent implements OnInit {
     );
   }
   getJugadorPorEquipo(idEquipo) {
-    this._jugadorService.getJugadorPorEquipo(idEquipo).subscribe(
+    this._jugadorService.getLibroPorAutor(idEquipo).subscribe(
       (result: any[]) => {
         this.listaJugadores = result;
       }

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {EquipoService} from "../../Servicios/equipo.service";
+import {AutorService} from "../../Servicios/autor.service";
 
 @Component({
   selector: 'app-equipo',
@@ -14,10 +14,10 @@ export class EquipoComponent implements OnInit {
   listaAMostrar;
   paginaActual: number = 1;
 
-  constructor(private _equipoService: EquipoService) { }
+  constructor(private _equipoService: AutorService) { }
 
   ngOnInit() {
-    this._equipoService.getEquipos().subscribe(
+    this._equipoService.getAutores().subscribe(
       (result: any[]) => {
         this.listaEquipos = result;
         this.obtenerListaAMostrar();

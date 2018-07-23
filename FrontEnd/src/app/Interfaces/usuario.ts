@@ -1,6 +1,8 @@
 export interface Usuario  {
+
   id: number,
-  nombre: string,
-  contrasena: string,
-  urlImg: string
+  usuario: string,
+  password: string,
+  imagenUrl: string
+
 }

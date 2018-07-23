@@ -3,7 +3,7 @@ import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {UsuarioService} from "./usuario.service";
 
 @Injectable()
-export class JugadorService {
+export class LibroService {
 
   constructor(private http: HttpClient) {
   }
@@ -17,20 +17,20 @@ export class JugadorService {
     return headers;
   }
 
-  getJugadores() {
-    let header = JugadorService.getCommonHeaders();
-    return this.http.get("http://localhost:1337/jugador",{headers: header});
+  getLibros() {
+    let header = LibroService.getCommonHeaders();
+    return this.http.get("http://localhost:1337/libro",{headers: header});
   }
-  getJugadorBusqueda(parametroBusqueda) {
+  getLibroBusqueda(parametroBusqueda) {
     let header = UsuarioService.getCommonHeaders();
-    return this.http.get("http://localhost:1337/jugador/" + parametroBusqueda ,{headers: header});
+    return this.http.get("http://localhost:1337/libro/" + parametroBusqueda ,{headers: header});
   }
-  getJugadorPorEquipo(idEquipo) {
+  getLibroPorAutor(idAutor) {
     let header = UsuarioService.getCommonHeaders();
-    return this.http.get("http://localhost:1337/jugador/porEquipo/" + idEquipo ,{headers: header});
+    return this.http.get("http://localhost:1337/libro/porAutor/" + idAutor ,{headers: header});
   }
-  getJugadorPorId(idJugador) {
-    let header = JugadorService.getCommonHeaders();
-    return this.http.get("http://localhost:1337/jugador/por/id/" + idJugador ,{headers: header});
+  getLibroPorId(idLibro) {
+    let header = LibroService.getCommonHeaders();
+    return this.http.get("http://localhost:1337/libro/por/id/" + idLibro ,{headers: header});
   }
 }

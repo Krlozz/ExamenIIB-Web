@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {JugadorService} from "../../Servicios/jugador.service";
+import {LibroService} from "../../Servicios/libro.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
@@ -15,11 +15,11 @@ export class JugadorComponent implements OnInit {
   listaAMostrar;
   paginaActual: number = 1;
 
-  constructor(private _jugadorService: JugadorService,  private _router: Router,
+  constructor(private _jugadorService: LibroService, private _router: Router,
               private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this._jugadorService.getJugadores().subscribe(
+    this._jugadorService.getLibros().subscribe(
       (result: any[]) => {
         this.listaJugadores = result;
         this.obtenerListaAMostrar();

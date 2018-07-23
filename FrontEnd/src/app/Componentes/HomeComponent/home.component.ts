@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {EquipoService} from "../../Servicios/equipo.service";
-import {JugadorService} from "../../Servicios/jugador.service";
+import {AutorService} from "../../Servicios/autor.service";
+import {LibroService} from "../../Servicios/libro.service";
 import {UsuarioService} from "../../Servicios/usuario.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Usuario} from "../../Interfaces/usuario";
@@ -9,7 +9,7 @@ import {Usuario} from "../../Interfaces/usuario";
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
-  providers: [EquipoService, JugadorService, UsuarioService]
+  providers: [AutorService, LibroService, UsuarioService]
 })
 export class HomeComponent implements OnInit {
 
@@ -38,8 +38,8 @@ export class HomeComponent implements OnInit {
   jugador_paginaActual: number = 1;
 
   constructor(private _usuarioService: UsuarioService,
-              private _equipoServcie: EquipoService,
-              private _jugadorService: JugadorService,
+              private _equipoServcie: AutorService,
+              private _jugadorService: LibroService,
               private _router: Router,
               private _activatedRoute: ActivatedRoute
   ) {
@@ -57,14 +57,14 @@ export class HomeComponent implements OnInit {
         this.usuario_listaAMostrar = this.obtenerListaAMostrar(this.listaUsuarios, this.usuario_paginaActual, this.usuario_numeroItems)
       }
     );
-    this._equipoServcie.getEquipos().subscribe(
+    this._equipoServcie.getAutores().subscribe(
       (result: any[]) => {
         this.listaEquipos = result;
         this.equipo_cantidadPaginas =  this.obtenerCantidadPaginas(this.listaEquipos, this.equipo_numeroItems);
         this.equipo_listaAMostrar = this.obtenerListaAMostrar(this.listaEquipos, this.equipo_paginaActual, this.equipo_numeroItems);
       }
     );
-    this._jugadorService.getJugadores().subscribe(
+    this._jugadorService.getLibros().subscribe(
       (result: any[]) => {
         this.listaJugadores = result;
         this.jugador_cantidadPaginas = this.obtenerCantidadPaginas(this.listaJugadores, this.jugador_numeroItems);
@@ -91,7 +91,7 @@ export class HomeComponent implements OnInit {
       }
     );
     //Equipo
-    this._equipoServcie.getEquipoBusqueda(this.datoABuscar).subscribe(
+    this._equipoServcie.getAutorBusqueda(this.datoABuscar).subscribe(
       (result: any []) => {
         this.listaEquipos = result;
         this.equipo_cantidadPaginas =  this.obtenerCantidadPaginas(this.listaEquipos, this.equipo_numeroItems);
@@ -99,7 +99,7 @@ export class HomeComponent implements OnInit {
     }
     );
     //Jugador
-    this._jugadorService.getJugadorBusqueda(this.datoABuscar).subscribe(
+    this._jugadorService.getLibroBusqueda(this.datoABuscar).subscribe(
       (result: any []) => {
         this.listaJugadores = result;
         this.jugador_cantidadPaginas = this.obtenerCantidadPaginas(this.listaJugadores, this.jugador_numeroItems);
