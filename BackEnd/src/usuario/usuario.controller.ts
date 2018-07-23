@@ -1,37 +1,59 @@
-import { Body, Controller, Get, Param, Post, Query } from '@nestjs/common';
-import { UsuarioService } from './usuario.service';
+import {Body, Controller, Get, Param, Post, Put, Req, Res} from "@nestjs/common";
+import {UsuarioService} from "./usuario.service";
+import {UsuarioEntity} from "./usuario.entity";
+import {NotFoundException} from "../exceptions/NotFound.exception";
 
 @Controller('usuario')
 export class UsuarioController {
 
-  constructor(private readonly _usuarioService: UsuarioService){}
+    constructor(private _usuarioService: UsuarioService) {}
 
-  @Get()
-  obtenerTodos(@Query() query){
-    const skip = query.skip;
-    const take = query.take;
-    if (isNaN(skip) && isNaN(take))
-      return this._usuarioService.findAll();
-    else
-      return this._usuarioService.findSkip(skip, take);
-  }
+    @Get()
+    async listarTodos(
+        @Res() response,
+        @Req() request,
+    ) {
+        const usuarios = await this._usuarioService.traerTodos();
+        return response.send(usuarios);
+    }
+    @Get('/:paramBusqueda')
+    async buscar(
+        @Param() paramParams,
+        @Res() response
+    ) {
+        const usuarios = await this._usuarioService.buscar(paramParams.paramBusqueda);
+        return response.send(usuarios);
+    }
+    @Get('/:nombreArgumento/:contrasena')
+    async buscarPorNombre(
+        @Param() paramParams,
+        @Res() response
+    ) {
+        let usuario = await this._usuarioService.obtenerUsuarioPorNombre(paramParams.nombreArgumento);
 
-  @Get(':id')
-  obtenerUno(@Param('id') id){
-    return this._usuarioService.findOneId(id);
-  }
-
-  @Post('login')
-  login(@Body() body){
-    const username = body.usuario;
-    const password = body.password;
-    return this._usuarioService.findOne(username, password);
-  }
-
-  @Get('search/:like')
-  obtenerLike(@Param('like') like){
-    return this._usuarioService.findLike(like);
-  }
-
-
+        if (usuario.password === paramParams.password) {
+            return response.send(
+                {respuesta: 'Aceptado',
+                    id: usuario.id });
+        } else {
+            throw new NotFoundException(
+                'Los datos son incorrectos',
+                'error',
+                4
+            )
+        }
+    }
+    @Get('por/id/:idUsuario')
+    async obtenerUsuarioPorId(
+        @Param() paramParams,
+        @Res() response
+    ) {
+        const usuario = await this._usuarioService.obtenerUsuarioPorId(paramParams.idUsuario);
+        return response.send(usuario);
+    }
+    @Post()
+    async crearUsuariosBase() {
+        const usuarios = this._usuarioService.crearUsuario();
+        return usuarios;
+    }
 }

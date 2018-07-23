@@ -1,40 +1,51 @@
-import { Injectable } from '@nestjs/common';
-import { UsuarioEntity } from './usuario.entity';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Like, Repository } from 'typeorm';
+import {Injectable} from "@nestjs/common";
+import {InjectRepository} from "@nestjs/typeorm";
+import {UsuarioEntity} from "./usuario.entity";
+import {Like, Repository} from "typeorm";
 
 @Injectable()
 export class UsuarioService {
 
-  constructor(
-    @InjectRepository(UsuarioEntity)
-    private readonly _usuarioRepository: Repository<UsuarioEntity>,
-  ){}
+    listaUsuarios = [
+        {'id': 1, 'usuario': 'carlos.ayala@hotmail.com', 'password': '12345', 'imagenUrl': 'http://www.iaipanama.org/images/img-demo/usuario-registrados.png'},
+        {'id': 2, 'usuario': 'alexis.miranda@hotmail.com', 'password': '12345', 'imagenUrl': 'http://www.iaipanama.org/images/img-demo/usuario-registrados.png'},
+        {'id': 3, 'usuario': 'gabriel.macias@hotmail.com', 'password': '12345', 'imagenUrl': 'http://www.iaipanama.org/images/img-demo/usuario-registrados.png'},
+        {'id': 4, 'usuario': 'paul.cisneros@hotmail.com', 'password': '12345', 'imagenUrl': 'http://www.iaipanama.org/images/img-demo/usuario-registrados.png'},
+        {'id': 5, 'usuario': 'kate.cajilema@hotmail.com', 'password': '12345', 'imagenUrl': 'http://www.iaipanama.org/images/img-demo/usuario-registrados.png'},
+        {'id': 6, 'usuario': 'christian.chicaiza@hotmail.com', 'password': '12345', 'imagenUrl': 'http://www.iaipanama.org/images/img-demo/usuario-registrados.png'},
+    ];
 
-  async findAll(): Promise<UsuarioEntity[]>{
-    return await this._usuarioRepository.find();
-  }
+    constructor(@InjectRepository(UsuarioEntity)
+                private readonly usuarioRepository: Repository<UsuarioEntity>){
+    }
 
-  async findOneId(id: string): Promise<UsuarioEntity>{
-    return await  this._usuarioRepository.findOne(id);
-  }
-  async findSkip(sk: number, tk: number): Promise<UsuarioEntity[]>{
-    return await this._usuarioRepository.find({
-      order: {
-        usuario: 'DESC',
-      },
-      skip: sk,
-      take: tk,
-    });
-  }
+    crearUsuario() {
+        for(var usuarios in this.listaUsuarios) {
+            const usuario = new UsuarioEntity();
+            usuario.id = this.listaUsuarios[usuarios].id;
+            usuario.usuario = this.listaUsuarios[usuarios].usuario;
+            usuario.password = this.listaUsuarios[usuarios].password;
+            usuario.imagenUrl = this.listaUsuarios[usuarios].imagenUrl;
+            this.usuarioRepository.save(usuario);
+        }
+        return this.usuarioRepository.find();
+    }
 
-  async findOne(user: string, pass: string): Promise<UsuarioEntity>{
-    return await this._usuarioRepository.findOneOrFail({ usuario: user, password: pass});
-  }
+    async traerTodos(): Promise<UsuarioEntity[]> {
+        return await this.usuarioRepository.find();
+    }
 
-  async findLike(lk: string): Promise<UsuarioEntity[]>{
-    return await this._usuarioRepository.find({
-      usuario: Like(`%${lk}%`),
-    });
-  }
+    async obtenerUsuarioPorNombre(nombreArgumento) {
+        return await this.usuarioRepository.
+        createQueryBuilder("usuario").where("usuario.nombre = :nombre", { usuario: nombreArgumento }).getOne();
+    }
+
+    async buscar(parametroBusqueda) {
+
+        return await this.usuarioRepository.find({ usuario: Like("%" + parametroBusqueda + "%") });
+    }
+
+    async obtenerUsuarioPorId(idUsuario) {
+        return await this.usuarioRepository.find({where: {id: idUsuario}})
+    }
 }
