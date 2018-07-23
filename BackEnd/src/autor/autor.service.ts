@@ -50,5 +50,5 @@ export class AutorService {
     async traerAutorPorUsuario(usuario): Promise<AutorEntity[]> {
         return await this.autorRepository.find({where: {usuario: usuario}});
     }
-    
+
 }

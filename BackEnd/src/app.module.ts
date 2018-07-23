@@ -23,7 +23,6 @@ import { UsuarioController } from './usuario/usuario.controller';
       database: 'bddBack',
       entities: [__dirname + '/../**/*.entity{.ts,.js}'],
       synchronize: true,
-      options: { encrypt: true },
     }),
     UsuarioModule,
     AutorModule,
