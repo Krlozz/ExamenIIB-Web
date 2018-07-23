@@ -1,20 +1,18 @@
-<div class="container" style="border-width: 1px; border-color: cadetblue ;border-style: solid">
-  <div class="col border-0">
-    <div class="row">
-      <div class="col-sm-3 text-center">
-        <div class="row justify-content-center">
-          <p class="nombreLibro">{{ libro.nombre }}</p>
-        </div>
-        <div class="row justify-content-center">
-          <p>ISBN: {{ libro.isbn }}</p>
-        </div>
-      </div>
-      <div class="col-sm-2 text-center">
-        <img [src]="libro.imagenUrl" alt="">
-      </div>
+
+<div class="row">
+  <div class="col-sm-3 text-center">
+    <div class="row justify-content-center">
+      <p class="nombreLibro">{{ libro.nombre }}</p>
     </div>
     <div class="row justify-content-center">
-      <button class="btn btn-primary">Pedir Transferencia</button>
+      <p>ISBN: {{ libro.isbn }}</p>
     </div>
   </div>
+  <div class="col-sm-2 text-center">
+    <img [src]="libro.imagenUrl" alt="">
+  </div>
 </div>
+<div class="row justify-content-center">
+  <button class="btn btn-primary">Pedir Transferencia</button>
+</div>
+

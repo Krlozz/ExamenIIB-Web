@@ -1,23 +1,44 @@
-import { Controller, Get, Param, Query } from '@nestjs/common';
-import { AutorService } from './autor.service';
+import {Body, Controller, Get, Param, Post, Put, Req, Res} from "@nestjs/common";
+import {AutorService} from "./autor.service";
+import {AutorEntity} from "./autor.entity";
 
-@Controller('autor')
+@Controller('Autor')
 export class AutorController {
 
+    constructor(private _autorService: AutorService) {}
 
-  constructor(private readonly _autorService: AutorService){}
-  @Get()
-  obtenerTodos(@Query() query){
-    const skip = query.skip;
-    const take = query.take;
-    if (isNaN(skip) && isNaN(take))
-      return this._autorService.findAll();
-    else
-      return this._autorService.findSkip(skip, take);
-  }
+    @Get()
+    async listarTodos(
+        @Res() response,
+        @Req() request,
+    ) {
+        const equipos = await this._autorService.traerTodos();
+        return response.send(equipos);
+    }
 
-  @Get('search/:like')
-  obtenerLike(@Param('like') like){
-    return this._autorService.findLike(like);
-  }
+    @Get('/:paramBusqueda')
+    async buscar(
+        @Param() paramParams,
+        @Res() response
+    ) {
+        const usuarios = await this._autorService.buscar(paramParams.paramBusqueda);
+        return response.send(usuarios);
+    }
+
+    @Get('/porUsuario/:idUsuario')
+    async obtenerAutorPorUsuario(
+        @Param() paramParams,
+        @Res() response
+    ) {
+        const usuarios = await this._autorService.traerAutorPorUsuario(paramParams.idUsuario);
+        return response.send(usuarios);
+    }
+
+    @Post()
+    async crearAutorBase() {
+        const autores = this._autorService.crearAutores();
+        return autores;
+    }
+
+
 }

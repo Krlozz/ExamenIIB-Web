@@ -11,7 +11,8 @@ import {AutorizacionService} from '../autorizacion.service';
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'home/:id', component: HomeComponent, canActivate: [ AutorizacionService ]}];
+  { path: 'home/:id', component: HomeComponent, canActivate: [ AutorizacionService ]},
+  ];
 
 @NgModule({
   exports: [ RouterModule ],
