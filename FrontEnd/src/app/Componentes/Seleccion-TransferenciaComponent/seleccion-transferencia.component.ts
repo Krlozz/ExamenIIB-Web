@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {Usuario} from "../../Interfaces/usuario";
-import {Jugador} from "../../Interfaces/libro";
+import {Libro} from "../../Interfaces/libro";
 import {ActivatedRoute, Router} from "@angular/router";
 import {LibroService} from "../../Servicios/libro.service";
 import {UsuarioService} from "../../Servicios/usuario.service";
 import {AutorService} from "../../Servicios/autor.service";
-import {Equipo} from "../../Interfaces/autor";
+import {Autor} from "../../Interfaces/autor";
 
 @Component({
   selector: 'app-seleccion-transferencia',
@@ -15,23 +15,23 @@ import {Equipo} from "../../Interfaces/autor";
 })
 export class SeleccionTransferenciaComponent implements OnInit {
 
-  listaJugadores = [];
-  equipo: Equipo;
-  jugadoraTransferir: Jugador;
+  listaLibros = [];
+  autor: Autor;
+  libroaTransferir: Libro;
   usuarioActual: Usuario;
 
   constructor(
     private _activatedRoute: ActivatedRoute,
-    private _jugadorService: LibroService,
+    private _libroService: LibroService,
     private _usuarioService: UsuarioService,
-    private _equipoService: AutorService,
+    private _autorService: AutorService,
     private _router: Router,
   ) {
     this._activatedRoute.params.subscribe(
       params =>{
         this.getUsuarioActualPorId(params['idUsuarioActual']);
-        this.getJugadorporId(params['idJugador']);
-        this.getJugadordeUsuario(params['idUsuarioActual'])
+        this.getLibroporId(params['idJugador']);
+        this.getLibrodeUsuario(params['idUsuarioActual'])
       });
   }
 
@@ -45,34 +45,34 @@ export class SeleccionTransferenciaComponent implements OnInit {
       }
     )
   }
-  getJugadorporId(idJugador) {
-    this._jugadorService.getLibroPorId(idJugador).subscribe(
+  getLibroporId(idJugador) {
+    this._libroService.getLibroPorId(idJugador).subscribe(
       (result: any) => {
-        this.jugadoraTransferir =  result[0];
-        console.log(this.jugadoraTransferir);
+        this.libroaTransferir =  result[0];
+        console.log(this.libroaTransferir);
       }
     )
   }
-  getJugadordeUsuario(idUsuarioActual) {
-    this._equipoService.getAutoresporUsuario(idUsuarioActual).subscribe(
+  getLibrodeUsuario(idUsuarioActual) {
+    this._autorService.getAutoresporUsuario(idUsuarioActual).subscribe(
       (result: any) => {
-        this.equipo = result[0];
-        this.getJugadoresdeEquipo(this.equipo.id);
+        this.autor = result[0];
+        this.getLibrosdeAutor(this.autor.id);
       }
     )
   }
-  getJugadoresdeEquipo(idEquipo) {
-    this._jugadorService.getLibroPorAutor(idEquipo).subscribe(
+  getLibrosdeAutor(idAutor) {
+    this._libroService.getLibroPorAutor(idAutor).subscribe(
       (result: any[]) => {
-        this.listaJugadores = result;
+        this.listaLibros = result;
       }
     )
   }
 
-  irAPerfil(idJugador: string) {
+  irAPerfil(idLibro: string) {
     this._activatedRoute.params.subscribe(
       params =>{
-        const url = ['/PerfilComponent', params['idUsuarioActual'], idJugador];
+        const url = ['/PerfilComponent', params['idUsuarioActual'], idLibro];
         this._router.navigate(url);
       }
     );

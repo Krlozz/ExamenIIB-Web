@@ -1,4 +1,4 @@
-<app-barra-superior [imgUsuario]="usuarioActual?.urlImg" [nombreUsuario]="usuarioActual?.nombre"></app-barra-superior>
+<app-barra-superior [imgUsuario]="usuarioActual?.imagenUrl" [nombreUsuario]="usuarioActual?.usuario"></app-barra-superior>
 <br>
 <div class="row">
   <div class="col-sm-1"></div>
@@ -10,26 +10,26 @@
         <h5>Usuario</h5>
         <br>
         <mat-card class="contenedor">
-          <h5 style="text-align: center">{{usuarioActual?.nombre}}</h5>
-          <img class="borde" style="width: 100%; max-width: 250px" src="{{usuarioActual?.urlImg}}" alt="Usuario Foto">
+          <h5 style="text-align: center">{{usuarioActual?.usuario}}</h5>
+          <img class="borde" style="width: 100%; max-width: 250px" src="{{usuarioActual?.imagenUrl}}" alt="Usuario Foto">
         </mat-card>
       </div>
       <div class="col-sm-9">
         <div class="row">
           <div class="col-sm-3"></div>
           <div class="col-sm-6">
-            <h5 style="text-align: center">Jugador a Transferir</h5>
+            <h5 style="text-align: center">Libro a Transferir</h5>
             <br>
             <div>
               <mat-card class="contenedor">
                 <div class="row">
                   <div class="col-sm-4">
-                    <img class="borde" src="{{jugadoraTransferir?.urlImg}}" alt="Usuario Foto" style="width: 100%">
+                    <img class="borde" src="{{libroaTransferir?.urlImg}}" alt="Libro Foto" style="width: 100%">
                   </div>
                   <div class="col-sm-8">
-                    <h5>{{jugadoraTransferir?.nombreCamiseta}}</h5>
-                    <label>Numero Camiseta: {{jugadoraTransferir?.numeroCamiseta}}</label>
-                    <button mat-stroked-button color="primary" style="width: 100%" (click)="irAPerfil(jugadoraTransferir?.id)">Transferir</button>
+                    <h5>{{libroaTransferir?.nombre}}</h5>
+                    <label>Páginas: {{libroaTransferir?.numeroPaginas}}</label>
+                    <button mat-stroked-button color="primary" style="width: 100%" (click)="irAPerfil(libroaTransferir?.id)">Transferir</button>
                   </div>
                 </div>
               </mat-card>
@@ -41,18 +41,18 @@
     </div>
     <br>
     <br>
-    <h5>Jugadores</h5>
+    <h5>Libros</h5>
     <br>
     <div class="row">
-      <div *ngFor="let jugador of listaJugadores" class="col-sm-3" style="width: 100%">
+      <div *ngFor="let libro of listaLibros" class="col-sm-3" style="width: 100%">
         <mat-card class="contenedor">
           <div class="row">
             <div class="col-sm-5">
-              <h5>{{jugador.nombreCamiseta}}</h5>
-              <label>Numero Camiseta: {{jugador.numeroCamiseta}}</label>
+              <h5>{{libro.nombre}}</h5>
+              <label>Páginas: {{libro.numeroPaginas}}</label>
             </div>
             <div class="col-sm-7">
-              <img class="borde" style="width: 100%" src="{{jugador.urlImg}}" alt="Usuario Foto">
+              <img class="borde" style="width: 100%" src="{{libro.imagenUrl}}" alt="Libro Foto">
             </div>
           </div>
           <br>
