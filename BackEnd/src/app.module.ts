@@ -11,6 +11,12 @@ import { LibroService } from './libro/libro.service';
 import { LibroModule } from './libro/libro.module';
 import { CorsMiddleware } from './cors/cors.middleware';
 import { UsuarioController } from './usuario/usuario.controller';
+import {LibroEntity} from "./libro/libro.entity";
+import {UsuarioEntity} from "./usuario/usuario.entity";
+import {AutorEntity} from "./autor/autor.entity";
+import {AutorizacionController} from "./autorizacion.controller";
+import {AutorService} from "./autor/autor.service";
+import {UsuarioService} from "./usuario/usuario.service";
 
 @Module({
   imports: [
@@ -24,19 +30,25 @@ import { UsuarioController } from './usuario/usuario.controller';
       entities: [__dirname + '/../**/*.entity{.ts,.js}'],
       synchronize: true,
     }),
-    UsuarioModule,
-    AutorModule,
-    LibroModule,
+      TypeOrmModule.forFeature([
+          UsuarioEntity,
+          AutorEntity,
+          LibroEntity])
+
   ],
-  controllers: [ AppController ],
-  providers: [ AppService ],
+  controllers: [
+      AppController,
+      AutorController,
+      LibroController,
+      AutorizacionController,
+      UsuarioController],
+  providers: [
+      AppService,
+      AutorService,
+      LibroService,
+      UsuarioService
+  ],
 })
-export class AppModule implements NestModule{
-  configure(consumer: MiddlewareConsumer): MiddlewareConsumer | void {
-    consumer
-      .apply(CorsMiddleware)
-      .with('AppModule')
-      .forRoutes(UsuarioController, LibroController, AutorController);
-  }
-  constructor(private readonly _connection: Connection){}
-}
+
+
+export class AppModule {}
