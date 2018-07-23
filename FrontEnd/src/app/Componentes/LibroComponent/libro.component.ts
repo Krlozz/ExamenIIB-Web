@@ -4,10 +4,10 @@ import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-jugador',
-  templateUrl: './jugador.component.html',
-  styleUrls: ['./jugador.component.css']
+  templateUrl: './libro.component.html',
+  styleUrls: ['./libro.component.css']
 })
-export class JugadorComponent implements OnInit {
+export class LibroComponent implements OnInit {
 
   listaJugadores = [];
   numeroItems = 4;

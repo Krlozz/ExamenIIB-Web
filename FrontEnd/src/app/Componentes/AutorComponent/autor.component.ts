@@ -3,10 +3,10 @@ import {AutorService} from "../../Servicios/autor.service";
 
 @Component({
   selector: 'app-equipo',
-  templateUrl: './equipo.component.html',
-  styleUrls: ['./equipo.component.css']
+  templateUrl: './autor.component.html',
+  styleUrls: ['./autor.component.css']
 })
-export class EquipoComponent implements OnInit {
+export class AutorComponent implements OnInit {
 
   listaEquipos = [];
   numeroItems = 2;

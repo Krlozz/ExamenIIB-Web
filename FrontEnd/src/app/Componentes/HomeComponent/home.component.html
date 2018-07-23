@@ -1,4 +1,4 @@
-<app-barra-superior [imgUsuario]="usuarioActual?.urlImg" [nombreUsuario]="usuarioActual?.nombre"></app-barra-superior>
+<app-barra-superior [imgUsuario]="usuarioActual?.imagenUrl" [nombreUsuario]="usuarioActual?.usuario"></app-barra-superior>
 <br>
 <div class="row">
   <div class="col-sm-2"></div>
@@ -10,7 +10,7 @@
         </div>
         <div class="col-sm-9">
           <mat-form-field style="width: 100%">
-            <input matInput placeholder="Busque por usuario, equipo o jugador" [(ngModel)]="datoABuscar">
+            <input matInput placeholder="Busque por usuario, autor o libro" [(ngModel)]="datoABuscar">
           </mat-form-field>
         </div>
         <div class="col-sm-2" style="padding-top: 15px">
@@ -33,8 +33,8 @@
     <div class="row">
       <div *ngFor="let usuario of usuario_listaAMostrar" class="col-sm-3" style="width: 100%">
         <mat-card class="contenedor" style="height: 100%">
-          <h5>{{usuario.nombre}}</h5>
-          <img class="borde" style="width: 100%; max-width: 200px; height: 200px" src="{{usuario.urlImg}}" alt="Usuario Foto">
+          <h5>{{usuario.usuario}}</h5>
+          <img class="borde" style="width: 100%; max-width: 200px; height: 200px" src="{{usuario.imagenUrl}}" alt="Usuario Foto">
           <mat-card-actions>
             <button style="width: 100%" mat-stroked-button color="primary" (click)="irAPeticionesDeTransferencia(usuario.id)">Visitar</button>
           </mat-card-actions>
@@ -62,20 +62,20 @@
 <div class="row">
   <div class="col-sm-1"></div>
   <div class="col-sm-10">
-    <h3>Equipo</h3>
+    <h3>Autor</h3>
     <br>
     <div class="row">
-      <div *ngFor="let equipo of equipo_listaAMostrar" class="col-sm-6" style="width: 100%">
+      <div *ngFor="let autor of autor_listaAMostrar" class="col-sm-6" style="width: 100%">
         <mat-card>
           <div class="row contenedor">
             <div class="col-sm-4">
-              <img class="borde" style="width: 200px; height: 200px;" src="{{equipo.urlImg}}" alt="Equipo Foto">
+              <img class="borde" style="width: 200px; height: 200px;" src="{{autor.imagenUrl}}" alt="Autor Foto">
             </div>
             <div class="col-sm-8">
-              <h5>{{equipo.nombre}}</h5>
-              <label>Liga: {{equipo.liga}}</label>
+              <h5>{{autor.nombre}}</h5>
+              <label>Apellido: {{autor.apellido}}</label>
               <br>
-              <label>Titulos: {{equipo.numeroCopasInternacionales}}</label>
+              <label>Libros: {{autor.numeroLibros}}</label>
             </div>
           </div>
         </mat-card>
@@ -85,11 +85,11 @@
     <br>
     <div class="row">
       <div class="col-sm-3">
-        <button mat-raised-button color="primary" (click)="prevEquipo()" [disabled]="equipo_paginaActual ===1">Anterior</button>
+        <button mat-raised-button color="primary" (click)="prevAutor()" [disabled]="autor_paginaActual ===1">Anterior</button>
       </div>
       <div class="col-sm-6"></div>
       <div class="col-sm-3">
-        <button mat-raised-button color="primary" style="width: 100%;" (click)="nextEquipo()" [disabled]="equipo_paginaActual===equipo_cantidadPaginas">Siguiente</button>
+        <button mat-raised-button color="primary" style="width: 100%;" (click)="nextAutor()" [disabled]="autor_paginaActual===autor_cantidadPaginas">Siguiente</button>
       </div>
     </div>
   </div>
@@ -101,21 +101,21 @@
 <div class="row">
   <div class="col-sm-1"></div>
   <div class="col-sm-10">
-    <h3>Jugadores</h3>
+    <h3>Libros</h3>
     <br>
     <div class="row">
-      <div *ngFor="let jugador of jugador_listaAMostrar" class="col-sm-3" style="width: 100%">
+      <div *ngFor="let libro of libro_listaAMostrar" class="col-sm-3" style="width: 100%">
         <mat-card>
           <div class="row contenedor">
             <div class="col-sm-6">
-              <h5>{{jugador.nombreCamiseta}}</h5>
-              <label>Goles: {{jugador.goles}}</label>
+              <h5>{{libro.nombre}}</h5>
+              <label>Páginas: {{libro.numeroPaginas}}</label>
             </div>
             <div class="col-sm-6">
-              <img class="borde" style=" width: 90px; height: 90px;" src="{{jugador.urlImg}}" alt="Jugador Foto">
+              <img class="borde" style=" width: 90px; height: 90px;" src="{{libro.imagenUrl}}" alt="Libro Foto">
             </div>
           </div>
-          <button mat-stroked-button color="primary" (click)="irASeleccionTransferencia(jugador.id)">Pedir Transfrencia</button>
+          <button mat-stroked-button color="primary" (click)="irASeleccionTransferencia(libro.id)">Pedir Transfrencia</button>
         </mat-card>
         <br>
       </div>
@@ -123,11 +123,11 @@
     <br>
     <div class="row">
       <div class="col-sm-3">
-        <button mat-raised-button color="primary" (click)="prevJugador()" [disabled]="jugador_paginaActual ===1">Anterior</button>
+        <button mat-raised-button color="primary" (click)="prevLibro()" [disabled]="libro_paginaActual ===1">Anterior</button>
       </div>
       <div class="col-sm-6"></div>
       <div class="col-sm-3">
-        <button mat-raised-button color="primary" style="width: 100%;" (click)="nextJugador()" [disabled]="jugador_paginaActual===jugador_cantidadPaginas">Siguiente</button>
+        <button mat-raised-button color="primary" style="width: 100%;" (click)="nextLibro()" [disabled]="libro_paginaActual===libro_cantidadPaginas">Siguiente</button>
       </div>
     </div>
   </div>

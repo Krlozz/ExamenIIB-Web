@@ -12,8 +12,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatButtonModule} from '@angular/material/button';
 import { HomeComponent } from './Componentes/HomeComponent/home.component';
 import { UsuarioComponent } from './Componentes/UsuarioComponent/usuario.component';
-import { EquipoComponent } from './Componentes/EquipoComponent/equipo.component';
-import { JugadorComponent } from './Componentes/JugadorComponent/jugador.component';
+import { AutorComponent } from './Componentes/AutorComponent/autor.component';
+import { LibroComponent } from './Componentes/LibroComponent/libro.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import { BarraSuperiorComponent } from './Componentes/Barra-SuperiorComponent/barra-superior.component';
 import {MatIconModule} from '@angular/material/icon';
@@ -31,8 +31,8 @@ import {routes} from "./app.routes";
     LoginComponent,
     HomeComponent,
     UsuarioComponent,
-    EquipoComponent,
-    JugadorComponent,
+    AutorComponent,
+    LibroComponent,
     BarraSuperiorComponent,
     PeticionTransferenciaComponent,
     SeleccionTransferenciaComponent,
