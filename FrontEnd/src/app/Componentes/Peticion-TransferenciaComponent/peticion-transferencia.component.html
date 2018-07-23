@@ -1,4 +1,4 @@
-<app-barra-superior [imgUsuario]="usuarioActual?.urlImg" [nombreUsuario]="usuarioActual?.nombre"></app-barra-superior>
+<app-barra-superior [imgUsuario]="usuarioActual?.imagenUrl" [nombreUsuario]="usuarioActual?.usuario"></app-barra-superior>
 <br>
 <div class="row">
   <div class="col-sm-1"></div>
@@ -10,25 +10,25 @@
         <h5>Usuario</h5>
         <br>
         <mat-card class="contenedor">
-          <h5 style="text-align: center" >{{usuario?.nombre}}</h5>
-          <img class="borde" style="width: 100%; max-width: 250px" src="{{usuario?.urlImg}}" alt="Usuario Foto">
+          <h5 style="text-align: center" >{{usuario?.usuario}}</h5>
+          <img class="borde" style="width: 100%; max-width: 250px" src="{{usuario?.imagenUrl}}" alt="Usuario Foto">
         </mat-card>
       </div>
       <div class="col-sm-9">
         <div class="row">
           <div class="col-sm-3"></div>
           <div class="col-sm-6">
-            <h5 style="text-align: center">Equipo</h5>
+            <h5 style="text-align: center">Autor</h5>
             <br>
             <div>
               <mat-card class="contenedor">
-                <div class="row" *ngFor="let equipo of listaEquipo">
+                <div class="row" *ngFor="let autor of listaAutor">
                   <div class="col-sm-4">
-                    <img class="borde" src="{{equipo.urlImg}}" alt="Usuario Foto" style="width: 100%">
+                    <img class="borde" src="{{autor.imagenUrl}}" alt="Autor Foto" style="width: 100%">
                   </div>
                   <div class="col-sm-8">
-                    <h5>{{equipo.nombre}}</h5>
-                    <label>{{equipo.liga}}</label>
+                    <h5>{{autor.nombre}}</h5>
+                    <label>{{autor.apellido}}</label>
                   </div>
                 </div>
 
@@ -41,22 +41,22 @@
     </div>
     <br>
     <br>
-    <h5>Jugadores</h5>
+    <h5>Libros</h5>
     <br>
     <div class="row">
-      <div *ngFor="let jugador of listaJugadores" class="col-sm-3" style="width: 100%">
+      <div *ngFor="let libro of listaLibros" class="col-sm-3" style="width: 100%">
         <mat-card>
           <div class="row contenedor">
             <div class="col-sm-5">
-              <h5>{{jugador.nombreCamiseta}}</h5>
-              <label>{{jugador.numeroCamiseta}}</label>
+              <h5>{{libro.nombre}}</h5>
+              <label>{{libro.numeroPaginas}}</label>
             </div>
             <div class="col-sm-7">
-              <img class="img-fluid borde" style="width: 100%" src="{{jugador.urlImg}}" alt="Usuario Foto">
+              <img class="img-fluid borde" style="width: 100%" src="{{libro.imagenUrl}}" alt="Libro Foto">
             </div>
           </div>
           <br>
-          <button mat-stroked-button color="primary" style="width: 100%" (click)="irASeleccionTransferencia(jugador.id)">Pedir Transferencia</button>
+          <button mat-stroked-button color="primary" style="width: 100%" (click)="irASeleccionTransferencia(libro.id)">Pedir Transferencia</button>
         </mat-card>
         <br>
       </div>

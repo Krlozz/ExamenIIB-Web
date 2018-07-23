@@ -11,21 +11,21 @@ import {Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  nombre: string = '';
-  contrasena: String = '';
+  usuario: string = '';
+  password: String = '';
   respuesta;
 
   constructor(private _usuarioService: UsuarioService,
               private _router: Router) {
-    this.nombre = 'Wilson';
-    this.contrasena = '12345';
+    this.usuario = 'carlos.ayala@hotmail.com';
+    this.password = '12345';
   }
 
   ngOnInit() {
   }
 
   ingresar() {
-    this._usuarioService.getUsuariosPorNombre(this.nombre, this.contrasena).subscribe(
+    this._usuarioService.getUsuariosPorNombre(this.usuario, this.passsword).subscribe(
       (result: any) => {
         this.respuesta = result;
         console.log(this.respuesta);

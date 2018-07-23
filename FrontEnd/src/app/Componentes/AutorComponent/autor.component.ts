@@ -2,7 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {AutorService} from "../../Servicios/autor.service";
 
 @Component({
-  selector: 'app-equipo',
+  selector: 'app-autor',
   templateUrl: './autor.component.html',
   styleUrls: ['./autor.component.css']
 })

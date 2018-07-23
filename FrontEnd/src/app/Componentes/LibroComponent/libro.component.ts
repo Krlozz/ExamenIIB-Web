@@ -3,25 +3,25 @@ import {LibroService} from "../../Servicios/libro.service";
 import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
-  selector: 'app-jugador',
+  selector: 'app-libro',
   templateUrl: './libro.component.html',
   styleUrls: ['./libro.component.css']
 })
 export class LibroComponent implements OnInit {
 
-  listaJugadores = [];
+  listaLibros = [];
   numeroItems = 4;
   cantidadPaginas;
   listaAMostrar;
   paginaActual: number = 1;
 
-  constructor(private _jugadorService: LibroService, private _router: Router,
+  constructor(private _libroService: LibroService, private _router: Router,
               private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this._jugadorService.getLibros().subscribe(
+    this._libroService.getLibros().subscribe(
       (result: any[]) => {
-        this.listaJugadores = result;
+        this.listaLibros = result;
         this.obtenerListaAMostrar();
         this.obtenerCantidadPaginas();
       }
@@ -29,14 +29,14 @@ export class LibroComponent implements OnInit {
   }
 
   obtenerCantidadPaginas() {
-    this.cantidadPaginas = this.listaJugadores.length/this.numeroItems;
+    this.cantidadPaginas = this.listaLibros.length/this.numeroItems;
     if (!Number.isInteger(this.cantidadPaginas)) {
       this.cantidadPaginas = Number.parseInt(this.cantidadPaginas + 1);
     }
   }
 
   obtenerListaAMostrar() {
-    this.listaAMostrar = this.listaJugadores.slice(this.paginaActual*this.numeroItems - this.numeroItems, this.paginaActual*this.numeroItems)
+    this.listaAMostrar = this.listaLibros.slice(this.paginaActual*this.numeroItems - this.numeroItems, this.paginaActual*this.numeroItems)
   }
 
   next() {
@@ -48,10 +48,10 @@ export class LibroComponent implements OnInit {
     this.obtenerListaAMostrar()
   }
 
-  irASeleccionTransferencia(idJugador: string) {
+  irASeleccionTransferencia(idLibro: string) {
     this._activatedRoute.params.subscribe(
       params =>{
-        const url = ['/selecTransf', params['idUsuarioActual'],idJugador];
+        const url = ['/selecTransf', params['idUsuarioActual'],idLibro];
         this._router.navigate(url);
       }
     );

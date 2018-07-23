@@ -1,4 +1,4 @@
-<app-barra-superior [imgUsuario]="usuarioActual?.urlImg" [nombreUsuario]="usuarioActual?.nombre"></app-barra-superior>
+<app-barra-superior [imgUsuario]="usuarioActual?.imagenUrl" [nombreUsuario]="usuarioActual?.usuario"></app-barra-superior>
 <br>
 <div class="row">
   <div class="col-sm-1"></div>
@@ -10,8 +10,8 @@
         <h5>Usuario</h5>
         <br>
         <mat-card class="contenedor">
-          <h5 style="text-align: center">{{usuarioActual?.nombre}}</h5>
-          <img class="borde" style="width: 100%; max-width: 250px" src="{{usuarioActual?.urlImg}}" alt="Usuario Foto">
+          <h5 style="text-align: center">{{usuarioActual?.usuario}}</h5>
+          <img class="borde" style="width: 100%; max-width: 250px" src="{{usuarioActual?.imagenUrl}}" alt="Usuario Foto">
         </mat-card>
       </div>
       <div class="col-sm-9"></div>
@@ -28,8 +28,8 @@
             <div class="col-sm-1"></div>
             <div class="col-sm-3">
               <mat-card class="contenedor">
-                <label style="text-align: center">{{usuarioDueno?.nombre}}</label>
-                <img class="borde" style="width: 100%; max-width: 250px" src="{{usuarioDueno?.urlImg}}" alt="Usuario Foto">
+                <label style="text-align: center">{{usuarioDueno?.usuario}}</label>
+                <img class="borde" style="width: 100%; max-width: 250px" src="{{usuarioDueno?.imagenUrl}}" alt="Usuario Foto">
               </mat-card>
             </div>
             <div class="col-sm-4"></div>
@@ -45,12 +45,12 @@
               <mat-card class="contenedor">
                 <div class="row">
                   <div class="col-sm-6">
-                    <label>Neymar</label>
+                    <label>100 años de Soledad</label>
                     <br>
-                    <label>25</label>
+                    <label>231</label>
                   </div>
                   <div class="col-sm-6">
-                    <img class="borde" style="width: 100%" src="https://files.antena2.com.co/antena2/public/styles/imagen_despliegue/public/2018-07/neymar_psg_afp_0_0_0.jpg?itok=LjsU26K4" alt="Usuario Foto">
+                    <img class="borde" style="width: 100%" src="http://www.mclanfranconi.com/wp-content/uploads/Icono-Libro-2.png" alt="Libro Foto">
                   </div>
                 </div>
               </mat-card>
@@ -64,12 +64,12 @@
               <mat-card class="contenedor">
                 <div class="row">
                   <div class="col-sm-6">
-                    <label>{{jugadorSeleccionado?.nombreCamiseta}}</label>
+                    <label>{{libroSeleccionado?.nombre}}</label>
                     <br>
-                    <label>{{jugadorSeleccionado?.goles}}</label>
+                    <label>{{libroSeleccionado?.numeroPaginas}}</label>
                   </div>
                   <div class="col-sm-6">
-                    <img class="borde" style="width: 100%" src="{{jugadorSeleccionado?.urlImg}}" alt="Usuario Foto">
+                    <img class="borde" style="width: 100%" src="{{libroSeleccionado?.imagenUrl}}" alt="Libro Foto">
                   </div>
                 </div>
               </mat-card>
@@ -128,12 +128,12 @@
               <mat-card class="contenedor">
                 <div class="row">
                   <div class="col-sm-6">
-                    <label>Ramos</label>
+                    <label>Ayala</label>
                     <br>
-                    <label>6</label>
+                    <label>4</label>
                   </div>
                   <div class="col-sm-6">
-                    <img class="borde" style="width: 100%" src="https://www.lavanguardia.com/r/GODO/LV/p5/WebSite/2018/03/10/Recortada/930069748_20180310155538-kkSD-U441415399549d6H-992x558@LaVanguardia-Web.jpg" alt="Usuario Foto">
+                    <img class="borde" style="width: 100%" src="http://www.mclanfranconi.com/wp-content/uploads/Icono-Libro-2.png" alt="Usuario Foto">
                   </div>
                 </div>
               </mat-card>

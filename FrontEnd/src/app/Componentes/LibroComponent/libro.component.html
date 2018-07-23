@@ -2,21 +2,21 @@
 <div class="row">
   <div class="col-sm-1"></div>
   <div class="col-sm-10">
-    <h3>Jugadores</h3>
+    <h3>Libros</h3>
     <br>
     <div class="row">
-      <div *ngFor="let jugador of listaAMostrar" class="col-sm-3" style="width: 100%">
+      <div *ngFor="let libro of listaAMostrar" class="col-sm-3" style="width: 100%">
         <mat-card>
           <div class="row">
             <div class="col-sm-6">
-              <h5>{{jugador.nombreCamiseta}}</h5>
-              <label>Camiseta: {{jugador.numeroCamiseta}}</label>
+              <h5>{{libro.nombre}}</h5>
+              <label>Páginas: {{libro.numeroPaginas}}</label>
             </div>
             <div class="col-sm-6">
-              <img src="{{jugador.urlImg}}" alt="Usuario Foto">
+              <img src="{{libro.imagenUrl}}" alt="Libro Foto">
             </div>
           </div>
-          <button mat-stroked-button color="primary" (click)="irASeleccionTransferencia(jugador.id)">Pedir Transfrencia</button>
+          <button mat-stroked-button color="primary" (click)="irASeleccionTransferencia(libro.id)">Pedir Transferencia</button>
         </mat-card>
         <br>
       </div>

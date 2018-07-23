@@ -14,8 +14,8 @@ import {Usuario} from "../../Interfaces/usuario";
 export class PeticionTransferenciaComponent implements OnInit {
 
   usuario: Usuario;
-  listaEquipo = [];
-  listaJugadores = [];
+  listaAutor = [];
+  listaLibros = [];
   usuarioActual: Usuario;
 
   constructor(private _activatedRoute: ActivatedRoute,
@@ -28,7 +28,7 @@ export class PeticionTransferenciaComponent implements OnInit {
       params =>{
         this.getUsuarioActualPorId(params['idUsuarioActual']);
         this.getUsuarioPorId(params['idUsuario']);
-        this.getEquipoPorUsuario(params['idUsuario']);
+        this.getAutorPorUsuario(params['idUsuario']);
       });
   }
   ngOnInit() {
@@ -47,26 +47,26 @@ export class PeticionTransferenciaComponent implements OnInit {
       }
     )
   }
-  getEquipoPorUsuario(idUsuario) {
+  getAutorPorUsuario(idUsuario) {
     this._equipoService.getAutoresporUsuario(idUsuario).subscribe(
       (result: any[]) => {
-        this.listaEquipo = result;
-        this.getJugadorPorEquipo(this.listaEquipo[0].id);
+        this.listaAutor = result;
+        this.getLibroPorAutor(this.listaAutor[0].id);
       }
     );
   }
-  getJugadorPorEquipo(idEquipo) {
+  getLibroPorAutor(idEquipo) {
     this._jugadorService.getLibroPorAutor(idEquipo).subscribe(
       (result: any[]) => {
-        this.listaJugadores = result;
+        this.listaLibros = result;
       }
     )
   }
 
-  irASeleccionTransferencia(idJugador: string) {
+  irASeleccionTransferencia(idLibro: string) {
     this._activatedRoute.params.subscribe(
       params =>{
-        const url = ['/selecTransf', params['idUsuarioActual'],idJugador];
+        const url = ['/selecTransf', params['idUsuarioActual'],idLibro];
         this._router.navigate(url);
       }
     );

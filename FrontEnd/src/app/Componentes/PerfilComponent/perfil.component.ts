@@ -3,9 +3,9 @@ import {Usuario} from "../../Interfaces/usuario";
 import {ActivatedRoute} from "@angular/router";
 import {UsuarioService} from "../../Servicios/usuario.service";
 import {LibroService} from "../../Servicios/libro.service";
-import {Jugador} from "../../Interfaces/libro";
+import {Libro} from "../../Interfaces/libro";
 import {AutorService} from "../../Servicios/autor.service";
-import {Equipo} from "../../Interfaces/autor";
+import {Autor} from "../../Interfaces/autor";
 
 @Component({
   selector: 'app-perfil',
@@ -15,20 +15,20 @@ import {Equipo} from "../../Interfaces/autor";
 })
 export class PerfilComponent implements OnInit {
 
-  equipo: Equipo;
+  autor: Autor;
   listaPeticiones = [1];
   listaPetBoton = [1];
   usuarioActual: Usuario;
-  jugadorSeleccionado: Jugador;
+  libroSeleccionado: Libro;
   usuarioDueno: Usuario;
   constructor( private _activatedRoute: ActivatedRoute,
                private _usuarioService: UsuarioService,
-               private _jugadorService: LibroService,
-               private _equipoService: AutorService,) {
+               private _libroService: LibroService,
+               private _autorService: AutorService,) {
     this._activatedRoute.params.subscribe(
       params=>{
         this.getUsuarioActualPorId(params['idUsuarioActual']);
-        this.getJugadorporId(params['idJugador']);
+        this.getLibroporId(params['idLibro']);
       }
     )
 
@@ -43,25 +43,25 @@ export class PerfilComponent implements OnInit {
       }
     )
   }
-  getJugadorporId(idJugador) {
-    this._jugadorService.getLibroPorId(idJugador).subscribe(
+  getLibroporId(idLibro) {
+    this._libroService.getLibroPorId(idLibro).subscribe(
       (result: any) => {
-        this.jugadorSeleccionado =  result[0];
-        console.log(this.jugadorSeleccionado);
-        this.getJugadordeUsuario(this.jugadorSeleccionado.id);
+        this.libroSeleccionado =  result[0];
+        console.log(this.libroSeleccionado);
+        this.getLibrodeUsuario(this.libroSeleccionado.id);
       }
     );
   }
-  getJugadordeUsuario(id) {
-    this._equipoService.getAutoresporUsuario(id).subscribe(
+  getLibrodeUsuario(id) {
+    this._autorService.getAutoresporUsuario(id).subscribe(
       (result: any) => {
-        this.equipo = result[0];
-        console.log(this.equipo);
-        this.getJugadoresdeEquipo(this.equipo.id);
+        this.autor = result[0];
+        console.log(this.autor);
+        this.getLibrosdeAutor(this.autor.id);
       }
     )
   }
-  getJugadoresdeEquipo(usuarioIdId) {
+  getLibrosdeAutor(usuarioIdId) {
     this._usuarioService.getUsuarioPorId(usuarioIdId).subscribe(
       (result: any) => {
         this.usuarioDueno =  result[0];
