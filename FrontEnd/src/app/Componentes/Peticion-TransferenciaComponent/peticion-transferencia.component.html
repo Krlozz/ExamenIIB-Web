@@ -1,0 +1,70 @@
+<app-barra-superior [imgUsuario]="usuarioActual?.urlImg" [nombreUsuario]="usuarioActual?.nombre"></app-barra-superior>
+<br>
+<div class="row">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+    <h3 style="text-align: center">Petición de Transferencia</h3>
+    <br>
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Usuario</h5>
+        <br>
+        <mat-card class="contenedor">
+          <h5 style="text-align: center" >{{usuario?.nombre}}</h5>
+          <img style="width: 100%; max-width: 250px" src="{{usuario?.urlImg}}" alt="Usuario Foto">
+        </mat-card>
+      </div>
+      <div class="col-sm-9">
+        <div class="row">
+          <div class="col-sm-3"></div>
+          <div class="col-sm-6">
+            <h5 style="text-align: center">Autor</h5>
+            <br>
+            <div>
+              <mat-card class="contenedor">
+                <div class="row" *ngFor="let autor of listaAutor">
+                  <div class="col-sm-4">
+                    <img src="{{autor.imagenUrl}}" alt="Usuario Foto" style="width: 100%">
+                  </div>
+                  <div class="col-sm-8">
+                    <h5>{{autor.nombre}} {{autor.apellido}}</h5>
+                    <label>Num. Libros: {{autor.numeroLibros}}</label>
+                  </div>
+                </div>
+
+              </mat-card>
+          </div>
+          <div class="col-sm-3"></div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <h5>Libros</h5>
+    <br>
+    <div class="row">
+      <div *ngFor="let libro of listaLibros" class="col-sm-3" style="width: 100%">
+        <mat-card>
+          <div class="row contenedor">
+            <div class="col-sm-5">
+              <h5>{{libro.nombre}}</h5>
+              <label>Edicion: {{libro.edicion}}</label>
+            </div>
+            <div class="col-sm-7">
+              <img style="width: 100%" src="{{libro.imagenUrl}}" alt="Usuario Foto">
+            </div>
+          </div>
+          <br>
+          <button type="button" class="btn btn-outline-secondary btn-block" (click)="irASeleccionTransferencia(libro.id)">Pedir Transferencia</button>
+        </mat-card>
+        <br>
+      </div>
+    </div>
+    <br>
+    <button type="button" class="btn btn-dark btn-lg btn-block">Cargar más</button>
+    <br>
+    <br>
+  </div>
+  <div class="col-sm-1"></div>
+</div>

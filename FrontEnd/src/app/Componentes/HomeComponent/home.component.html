@@ -1,0 +1,147 @@
+<app-barra-superior [imgUsuario]="usuarioActual?.urlImg" [nombreUsuario]="usuarioActual?.nombre"></app-barra-superior>
+
+<br>
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+
+      <div class="row" >
+        <div class="col-sm-1" style="padding-top: 18px; padding-left: 35px">
+
+        </div>
+        <div class="col-sm-9">
+          <div>
+            <input type="text" class="form-control" placeholder="Busque por usuario, autor o libro" [(ngModel)]="datoABuscar">
+          </div>
+        </div>
+
+        <div class="col-sm-2">
+          <button type="button" class="btn btn-outline-dark" (click)="cargarDatosbusqueda()">Buscar</button>
+        </div>
+      </div>
+  </div>
+  <div class="col-sm-2"></div>
+</div>
+
+<br>
+
+
+<br>
+<div class="row">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+    <h3>Usuarios</h3>
+    <br>
+    <div class="row">
+      <div *ngFor="let usuario of usuario_listaAMostrar" class="col-sm-3" style="width: 100%">
+        <mat-card class="contenedor" style="height: 100%">
+          <h5 style="font-size: large">{{usuario.nombre}}</h5>
+          <img style="width: 100%; max-width: 200px; height: 200px" src="{{usuario.urlImg}}" alt="Usuario Foto">
+          <mat-card-actions>
+            <button type="button" class="btn btn-outline-info" (click)="irAPeticionesDeTransferencia(usuario.id)">Visitar</button>
+          </mat-card-actions>
+        </mat-card>
+        <br>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-sm-3">
+        <button type="button" class="btn btn-outline-secondary btn-block" (click)="prevUsuario()" [disabled]="usuario_paginaActual ===1"> <--Anterior</button>
+      </div>
+      <div class="col-sm-6"></div>
+      <div class="col-sm-3">
+        <button type="button" class="btn btn-outline-secondary btn-block" (click)="nextUsuario()" [disabled]="usuario_paginaActual===usuario_cantidadPaginas">Siguiente--></button>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-1"></div>
+</div>
+<br>
+<hr style="color: black" size="7" width="90%"/>
+<hr style="color: black" width="90%"/>
+
+<br>
+<div class="row">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+    <h3>Autor</h3>
+    <br>
+    <div class="row">
+      <div *ngFor="let autor of autor_listaAMostrar" class="col-sm-6" style="width: 100%">
+        <mat-card>
+          <div class="row contenedor">
+            <div class="col-sm-4">
+              <img style="width: 200px; height: 200px;" src="{{autor.imagenUrl}}" alt="Autor Foto">
+            </div>
+            <div class="col-sm-8">
+              <h5>{{autor.nombre}} {{autor.apellido}}</h5>
+              <label>Fec. Nacimiento: {{autor.fechaNacimiento}}</label>
+              <br>
+              <label>Num. Libros: {{autor.numeroLibros}}</label>
+            </div>
+          </div>
+        </mat-card>
+        <br>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-sm-3">
+        <button type="button" class="btn btn-outline-secondary btn-block" (click)="prevAutor()" [disabled]="autor_paginaActual ===1"> <--Anterior</button>
+      </div>
+      <div class="col-sm-6"></div>
+      <div class="col-sm-3">
+        <button type="button" class="btn btn-outline-secondary btn-block" (click)="nextAutor()" [disabled]="autor_paginaActual===autor_cantidadPaginas">Siguiente--></button>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-1"></div>
+</div>
+<br>
+<hr style="color: black" size="7" width="90%"/>
+<hr style="color: black" width="90%"/>
+<br>
+<div class="row">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+    <h3>Libros</h3>
+    <br>
+    <div class="row">
+      <div *ngFor="let libro of libro_listaAMostrar" class="col-sm-3" style="width: 100%">
+        <mat-card>
+          <div class="row contenedor">
+            <div class="col-sm-6">
+              <br>
+              <h5 style="font-size: small">{{libro.nombre}}</h5>
+              <label style="font-size: small;">Edicion: {{libro.edicion}}</label>
+              <br>
+            </div>
+            <div class="col-sm-6">
+              <img style=" width: 90px; height: 90px;" src="{{libro.imagenUrl}}" alt="Libro Foto">
+            </div>
+          </div>
+
+          <br>
+          <button type="button" class="btn btn-outline-dark btn-block" (click)="irASeleccionTransferencia(libro.id)">Pedir Transfrencia</button>
+        </mat-card>
+        <br>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-sm-3">
+        <button type="button" class="btn btn-outline-secondary btn-block" (click)="prevLibro()" [disabled]="libro_paginaActual ===1"> <--Anterior</button>
+      </div>
+      <div class="col-sm-6"></div>
+      <div class="col-sm-3">
+        <button type="button" class="btn btn-outline-secondary btn-block" (click)="nextLibro()" [disabled]="libro_paginaActual===libro_cantidadPaginas">Siguiente--></button>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-1"></div>
+</div>
+<br>
+<hr style="color: black" size="7" width="90%"/>
+<hr style="color: black" width="90%"/>
+<br>

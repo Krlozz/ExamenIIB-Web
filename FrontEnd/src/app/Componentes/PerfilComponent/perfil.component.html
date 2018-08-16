@@ -1,0 +1,162 @@
+<app-barra-superior [imgUsuario]="usuarioActual?.urlImg" [nombreUsuario]="usuarioActual?.nombre"></app-barra-superior>
+<br>
+<div class="row">
+  <div class="col-sm-1"></div>
+  <div class="col-sm-10">
+    <h3 style="text-align: center">Perfil</h3>
+    <br>
+    <div class="row">
+      <div class="col-sm-3">
+        <h5>Usuario</h5>
+        <br>
+        <mat-card class="contenedor">
+          <h5 style="text-align: center">{{usuarioActual?.nombre}}</h5>
+          <img style="width: 100%; max-width: 250px" src="{{usuarioActual?.urlImg}}" alt="Usuario Foto">
+        </mat-card>
+      </div>
+      <div class="col-sm-9"></div>
+    </div>
+    <br>
+    <h3>Peticiones</h3>
+    <br>
+    <div class="row">
+      <div class="col-sm-1"></div>
+      <div class="col-sm-10">
+        <div *ngFor="let peticion of listaPeticiones">
+          <br>
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+              <mat-card class="contenedor">
+                <label style="text-align: center">{{usuarioDueno?.nombre}}</label>
+                <img style="width: 100%; max-width: 250px" src="{{usuarioDueno?.urlImg}}" alt="Usuario Foto">
+              </mat-card>
+            </div>
+            <div class="col-sm-4"></div>
+            <div class="col-sm-3">
+              <h5>En Espera</h5>
+            </div>
+            <div class="col-sm-1"></div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+              <mat-card class="contenedor">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <label style="font-size: small;">El Alquimista</label>
+                    <br>
+                    <label style="font-size: small;">Edicion: 1</label>
+                  </div>
+                  <div class="col-sm-6">
+                    <img style="width: 100%" src="http://www.mclanfranconi.com/wp-content/uploads/Icono-Libro-2.png" alt="Usuario Foto">
+                  </div>
+                </div>
+              </mat-card>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2">
+              <mat-icon>swap_horiz</mat-icon>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+              <mat-card class="contenedor">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <label style="font-size: small;">{{libroSeleccionado?.nombre}}</label>
+                    <br>
+                    <label style="font-size: small;">Edicion: {{libroSeleccionado?.edicion}}</label>
+                  </div>
+                  <div class="col-sm-6">
+                    <img style="width: 100%" src="{{libroSeleccionado?.imagenUrl}}" alt="Usuario Foto">
+                  </div>
+                </div>
+              </mat-card>
+            </div>
+            <div class="col-sm-1"></div>
+          </div>
+          <br>
+          <hr>
+        </div>
+
+
+        <div *ngFor="let peticion of listaPetBoton">
+          <br>
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+              <br>
+              <br>
+              <a tabindex="0" class="btn btn-outline-primary btn-lg" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="Has aceptado la transferencia">Aceptar</a>
+              <br>
+              <br>
+              <a tabindex="0" class="btn btn-outline-danger btn-lg" role="button" data-toggle="popover" data-trigger="focus" title="Dismissible popover" data-content="Has rechazado la transferencia">Rechazar</a>
+            </div>
+            <div class="col-sm-4"></div>
+            <div class="col-sm-3">
+              <mat-card class="contenedor">
+                <label style="text-align: center">Elizabeth Vetancour</label>
+                <img style="width: 100%; max-width: 250px" src="http://icons-for-free.com/icon/download-dark_male_writer_icon-419734.png" alt="Usuario Foto">
+              </mat-card>
+            </div>
+            <div class="col-sm-1"></div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+              <mat-card class="contenedor">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <label style="font-size: small;">El Código da Vinci</label>
+                    <br>
+                    <label style="font-size: small;">Edicion: 1</label>
+                  </div>
+                  <div class="col-sm-6">
+                    <img style="width: 100%" src="http://www.mclanfranconi.com/wp-content/uploads/Icono-Libro-2.png" alt="Usuario Foto">
+                  </div>
+                </div>
+              </mat-card>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-2">
+              <mat-icon>swap_horiz</mat-icon>
+            </div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-3">
+              <mat-card class="contenedor">
+                <div class="row">
+                  <div class="col-sm-6">
+                    <label style="font-size: small;">100 años de Soledad</label>
+                    <br>
+                    <label style="font-size: small;">Edicion: 1</label>
+                  </div>
+                  <div class="col-sm-6">
+                    <img style="width: 100%" src="http://www.mclanfranconi.com/wp-content/uploads/Icono-Libro-2.png" alt="Usuario Foto">
+                  </div>
+                </div>
+              </mat-card>
+            </div>
+            <div class="col-sm-1"></div>
+          </div>
+          <br>
+          <hr>
+        </div>
+      </div>
+      <div class="col-sm-1"></div>
+    </div>
+    <br>
+    <button type="button" class="btn btn-dark btn-lg btn-block">Cargar más</button>
+    <br>
+  </div>
+  <div class="col-sm-1"></div>
+</div>
+<script>
+  $(function () {
+    $('[data-toggle="popover"]').popover()
+  })
+</script>
+<script>$('.popover-dismiss').popover({
+  trigger: 'focus'
+})</script>
